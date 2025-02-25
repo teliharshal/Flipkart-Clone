@@ -1,16 +1,13 @@
-import React from 'react';
-import { useState ,useCallback,useEffect,useRef} from "react";
-// import "./App.css";
-
+import Navbar from './components/Navbar';
 
 function App() {
-  
-    
-  return(    
-   <>
- 
-   </>
+  return (
+    <div>
+      <Navbar />
+      {/* Rest of your content */}
+    </div>
   );
 }
 
 export default App;
+
