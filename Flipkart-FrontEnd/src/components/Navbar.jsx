@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { 
   MenuIcon, XIcon, ShoppingCartIcon, SearchIcon, ChevronDownIcon 
 } from "@heroicons/react/outline";
@@ -12,10 +12,29 @@ const Navbar = () => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
+  const loginRef = useRef(null);
+  const moreRef = useRef(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (loginRef.current && !loginRef.current.contains(event.target)) {
+        setIsLoginOpen(false);
+      }
+      if (moreRef.current && !moreRef.current.contains(event.target)) {
+        setIsMoreOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="bg-[#2874f0] fixed w-full z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16">
           {/* Left section */}
           <div className="flex items-center">
             {/* Mobile menu button */}
@@ -30,12 +49,13 @@ const Navbar = () => {
               )}
             </button>
 
-            {/* Logo */}
-            <div className="flex items-center ml-2">
-              <span className="text-white font-bold text-2xl">Flipkart</span>
-              <span className="text-white text-xs ml-2 italic flex items-center">
-                Explore <span className="text-yellow-300 font-semibold ml-1">Plus</span>
-              </span>
+            {/* Logo Image */}
+            <div className="ml-2">
+              <img
+                src="https://ups.itembase.com/wp-content/uploads/2021/02/279-200px600px-Color.png" 
+                alt="Flipkart Logo"
+                className="h-10 w-auto"
+              />
             </div>
           </div>
 
@@ -57,11 +77,13 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-6">
             {/* Login Dropdown */}
             <div 
-              className="relative"
-              onMouseEnter={() => setIsLoginOpen(true)}
-              onMouseLeave={() => setIsLoginOpen(false)}
+              className="relative" 
+              ref={loginRef}
             >
-              <button className="bg-white text-[#2874f0] px-4 py-1 rounded font-semibold hover:bg-gray-100 flex items-center">
+              <button 
+                onClick={() => setIsLoginOpen(!isLoginOpen)}
+                className="bg-white text-[#2874f0] px-4 py-1 rounded font-semibold hover:bg-gray-100 flex items-center"
+              >
                 Login
               </button>
               {isLoginOpen && (
@@ -104,11 +126,13 @@ const Navbar = () => {
 
             {/* More Dropdown */}
             <div 
-              className="relative"
-              onMouseEnter={() => setIsMoreOpen(true)}
-              onMouseLeave={() => setIsMoreOpen(false)}
+              className="relative" 
+              ref={moreRef}
             >
-              <button className="text-white font-semibold hover:text-gray-200 flex items-center">
+              <button 
+                onClick={() => setIsMoreOpen(!isMoreOpen)}
+                className="text-white font-semibold hover:text-gray-200 flex items-center"
+              >
                 More <ChevronDownIcon className="h-4 w-4 ml-1" />
               </button>
               {isMoreOpen && (
@@ -122,7 +146,7 @@ const Navbar = () => {
                     <BellIcon className="h-4 w-4 mr-2" /> Notifications
                   </a>
                   <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <HeadphonesIcon className="h-4 w-4 mr-2" /> Customer Support
+                    <HeadphonesIcon className="h-4 w-4 mr-2" /> 24X7 Customer Care
                   </a>
                   <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <MegaphoneIcon className="h-4 w-4 mr-2" /> Advertise
@@ -140,31 +164,6 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden pb-4">
-            <div className="mt-2">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search for products, brands and more"
-                  className="w-full px-4 py-2 rounded-sm focus:outline-none"
-                />
-                <button className="absolute right-0 top-0 h-full px-4 text-[#2874f0]">
-                  <SearchIcon className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="mt-4 space-y-4">
-              <a href="#" className="block text-white hover:text-gray-200">My Account</a>
-              <a href="#" className="block text-white hover:text-gray-200">Orders</a>
-              <a href="#" className="block text-white hover:text-gray-200">Cart</a>
-              <a href="#" className="block text-white hover:text-gray-200">Become a Seller</a>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );
