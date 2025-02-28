@@ -164,6 +164,30 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+         {/* Mobile Menu */}
+         {isMenuOpen && (
+          <div className="lg:hidden pb-4">
+            <div className="mt-2">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search for products, brands and more"
+                  className="w-full px-4 py-2 rounded-sm focus:outline-none"
+                />
+                <button className="absolute right-0 top-0 h-full px-4 text-[#2874f0]">
+                  <SearchIcon className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-4 space-y-4">
+              <a href="#" className="block text-white hover:text-gray-200">My Account</a>
+              <a href="#" className="block text-white hover:text-gray-200">Orders</a>
+              <a href="#" className="block text-white hover:text-gray-200">Cart</a>
+              <a href="#" className="block text-white hover:text-gray-200">Become a Seller</a>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
