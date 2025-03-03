@@ -67,7 +67,7 @@ const Footer = () => {
        
 
       {/* Bottom Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center mt-6 text-sm text-gray-400 space-y-4 md:space-y-0">
+      <div className="flex flex-col md:flex-row justify-between items-center mt-6 text-sm text-gray-400 space-y-4 md:space-y-0 ">
         <div className="flex space-x-4 text-white text-center">
           <a href="#" className="hover:text-yellow-400">🛍️ Become a Seller</a>
           <a href="#" className="hover:text-yellow-400">⭐ Advertise</a>

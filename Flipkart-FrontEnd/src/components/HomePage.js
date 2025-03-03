@@ -1,8 +1,7 @@
 import React from "react";
 import PromotionalCards from "./PromotionalCards";
 import HeroSection from "./HeroSection";
-import FloatingCart from "./FloatingCart";
-import CategoryNav from "./CategoryNav";
+import HomeDeals from "./HomeDeals";
 
 const HomePage = () => {
   return (
@@ -10,15 +9,19 @@ const HomePage = () => {
 
 
     {/* CategoryNav */}
-     <CategoryNav />
 
       {/* Hero Section (Main Banner) */}
       <HeroSection />
 
+
       {/* Promotional Cards Section */}
       <PromotionalCards />
 
-      <FloatingCart />
+      <HomeDeals/>
+
+    
+
+      {/* <FloatingCart /> */}
     </div>
   );
 };

@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link
 import { 
-  MenuIcon, XIcon, ShoppingCartIcon, SearchIcon, ChevronDownIcon 
-} from "@heroicons/react/outline";
+  Bars3Icon, XMarkIcon, ShoppingCartIcon, MagnifyingGlassIcon, ChevronDownIcon 
+} from "@heroicons/react/24/outline";  // ✅ Correct Heroicons import
 import { motion } from "framer-motion";
 import { 
-  UserIcon, GiftIcon, HeartIcon, TicketIcon, BellIcon, HeadphonesIcon, DownloadIcon, BadgeCheckIcon, MegaphoneIcon
+  UserIcon, GiftIcon, HeartIcon, HeadphonesIcon, MegaphoneIcon 
 } from "lucide-react";
 
 const Navbar = () => {
@@ -15,7 +16,6 @@ const Navbar = () => {
   const loginRef = useRef(null);
   const moreRef = useRef(null);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (loginRef.current && !loginRef.current.contains(event.target)) {
@@ -43,19 +43,21 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? (
-                <XIcon className="h-6 w-6" />
+                <XMarkIcon className="h-6 w-6" />
               ) : (
-                <MenuIcon className="h-6 w-6" />
+                <Bars3Icon className="h-6 w-6" />
               )}
             </button>
 
             {/* Logo Image */}
             <div className="ml-2">
-              <img
-                src="https://ups.itembase.com/wp-content/uploads/2021/02/279-200px600px-Color.png" 
-                alt="Flipkart Logo"
-                className="h-10 w-auto"
-              />
+              <Link to="/"> {/* ✅ Use Link instead of <a> */}
+                <img
+                  src="https://ups.itembase.com/wp-content/uploads/2021/02/279-200px600px-Color.png" 
+                  alt="Flipkart Logo"
+                  className="h-10 w-auto"
+                />
+              </Link>
             </div>
           </div>
 
@@ -68,7 +70,7 @@ const Navbar = () => {
                 className="w-full px-4 py-2 rounded-sm focus:outline-none"
               />
               <button className="absolute right-0 top-0 h-full px-4 text-[#2874f0]">
-                <SearchIcon className="h-5 w-5" />
+                <MagnifyingGlassIcon className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -76,10 +78,7 @@ const Navbar = () => {
           {/* Right section */}
           <div className="hidden lg:flex items-center space-x-6">
             {/* Login Dropdown */}
-            <div 
-              className="relative" 
-              ref={loginRef}
-            >
+            <div className="relative" ref={loginRef}>
               <button 
                 onClick={() => setIsLoginOpen(!isLoginOpen)}
                 className="bg-white text-[#2874f0] px-4 py-1 rounded font-semibold hover:bg-gray-100 flex items-center"
@@ -95,40 +94,28 @@ const Navbar = () => {
                 >
                   <div className="flex justify-between items-center px-4 py-2 border-b">
                     <span className="text-gray-600">New Customer?</span>
-                    <a href="#" className="text-[#2874f0] font-semibold">Sign Up</a>
+                    <Link to="/signup" className="text-[#2874f0] font-semibold">Sign Up</Link>
                   </div>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
+                  <Link to="/profile" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <UserIcon className="h-4 w-4 mr-2" /> My Profile
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <BadgeCheckIcon className="h-4 w-4 mr-2" /> Flipkart Plus Zone
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
+                  </Link>
+                  <Link to="/orders" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <GiftIcon className="h-4 w-4 mr-2" /> Orders
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
+                  </Link>
+                  <Link to="/wishlist" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <HeartIcon className="h-4 w-4 mr-2" /> Wishlist
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <TicketIcon className="h-4 w-4 mr-2" /> Rewards
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <GiftIcon className="h-4 w-4 mr-2" /> Gift Cards
-                  </a>
+                  </Link>
                 </motion.div>
               )}
             </div>
 
             {/* Become a Seller */}
-            <a href="#" className="text-white font-semibold hover:text-gray-200 flex items-center">
+            <Link to="/seller" className="text-white font-semibold hover:text-gray-200 flex items-center">
               Become a Seller
-            </a>
+            </Link>
 
             {/* More Dropdown */}
-            <div 
-              className="relative" 
-              ref={moreRef}
-            >
+            <div className="relative" ref={moreRef}>
               <button 
                 onClick={() => setIsMoreOpen(!isMoreOpen)}
                 className="text-white font-semibold hover:text-gray-200 flex items-center"
@@ -142,49 +129,31 @@ const Navbar = () => {
                   exit={{ opacity: 0, y: 10 }}
                   className="absolute left-0 mt-2 w-56 bg-white shadow-lg rounded-lg p-2"
                 >
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <BellIcon className="h-4 w-4 mr-2" /> Notifications
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
+                  <Link to="/customer-care" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <HeadphonesIcon className="h-4 w-4 mr-2" /> 24X7 Customer Care
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
+                  </Link>
+                  <Link to="/advertise" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <MegaphoneIcon className="h-4 w-4 mr-2" /> Advertise
-                  </a>
-                  <a href="#" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <DownloadIcon className="h-4 w-4 mr-2" /> Download App
-                  </a>
+                  </Link>
                 </motion.div>
               )}
             </div>
 
-            <button className="text-white font-semibold hover:text-gray-200 flex items-center">
+            <Link to="/cart" className="text-white font-semibold hover:text-gray-200 flex items-center">
               <ShoppingCartIcon className="h-5 w-5 mr-1" />
               Cart
-            </button>
+            </Link>
           </div>
         </div>
-         {/* Mobile Menu */}
-         {isMenuOpen && (
-          <div className="lg:hidden pb-4">
-            <div className="mt-2">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search for products, brands and more"
-                  className="w-full px-4 py-2 rounded-sm focus:outline-none"
-                />
-                <button className="absolute right-0 top-0 h-full px-4 text-[#2874f0]">
-                  <SearchIcon className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
 
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden pb-4">
             <div className="mt-4 space-y-4">
-              <a href="#" className="block text-white hover:text-gray-200">My Account</a>
-              <a href="#" className="block text-white hover:text-gray-200">Orders</a>
-              <a href="#" className="block text-white hover:text-gray-200">Cart</a>
-              <a href="#" className="block text-white hover:text-gray-200">Become a Seller</a>
+              <Link to="/profile" className="block text-white hover:text-gray-200">My Account</Link>
+              <Link to="/orders" className="block text-white hover:text-gray-200">Orders</Link>
+              <Link to="/cart" className="block text-white hover:text-gray-200">Cart</Link>
+              <Link to="/seller" className="block text-white hover:text-gray-200">Become a Seller</Link>
             </div>
           </div>
         )}

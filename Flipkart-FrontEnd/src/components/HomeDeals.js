@@ -6,44 +6,37 @@ import "swiper/css/navigation";
 
 const smartphones = [
   {
-    name: "Best TrueWireless H...",
-    image: "https://www.baudville.com/cdn/shop/products/BV_94172_FRONT.jpg?v=1702501363",
-    price: "Grab Now",
+    name: "Motorola Edge 50 Pro",
+    image:
+      "https://motorolain.vtexassets.com/arquivos/ids/159178/motorola-edge-50-pro-PDP-ecomm-render-color5-5-.png?v=638614765175970000",
+    price: "From ₹20,000",
   },
   {
-    name: "Noise Smartwatches",
-    image: "https://www.gonoise.com/cdn/shop/products/Artboard17.png?v=1674121716",
-    price: "From ₹1,099",
+    name: "CMF Phone (8GB)",
+    image: "https://at.nothing.tech/cdn/shop/files/2048x1352BuyPage-BlackPhone-1.png?v=1720093505",
+    price: "Just ₹12,999*",
   },
   {
-    name: "Printers",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReGnAhYfVx5dKEmhNuHNHK7y9sASSNuHXhFw&s",
-    price: "From ₹499*",
-  },
-  {
-    name: "Top Mirrorless Cameras",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIO0LgJBeaJurUGvXVDh9LWVmCKeHQRxFzsg&s",
-    price: "Shop Now!",
-  },
-  {
-    name: "ASUS Monitors",
-    image: "https://mx2games.com/wp-content/uploads/2024/10/Asus-Rog-Swift-32-Inch-4K-Oled-Gaming-Monitor-Dual-Mode-4K-FHD-PG32UCDP-httpsmx2games.com_.png",
-    price: "From ₹14,999",
-  },
-  {
-    name: "Projectors",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaMKyCmswvjYKi4qPLC_O2KdUbRGH_E18YbQ&s",
+    name: "Moto G35 5G",
+    image:
+      "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/z/q/m/g35-5g-pb3h0000in-motorola-original-imah7c6ykgz5rtgv.jpeg?q=90&crop=false",
     price: "From ₹9,999",
   },
   {
-    name: "Best of Shavers",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1JNgmVKkDTgPownwzfa6p06TZCyhTMlJJFmYElO66rYSnitn8zufzTLN6kYMxF_7XF1k&usqp=CAU",
-    price: "From ₹999",
+    name: "Moto G64 5G",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3IU94aS-_pfrsL8QQGeDNE1iNb6U3N2DnXQ&s",
+    price: "Just ₹12,999*",
   },
   {
-    name: "Best SmartPhones",
-    image: "https://www.oppostore.com.au/cdn/shop/files/1_413475e3-4489-48be-ac95-735bad7e914b.png?v=1723427854&width=1080",
-    price: "From ₹9,999",
+    name: "Realme P1 5G",
+    image:
+      "https://rukminim2.flixcart.com/image/850/1000/xif0q/mobile/y/9/0/-original-imahyuhfg2z4fvyh.jpeg?q=90&crop=false",
+    price: "From ₹13,999",
+  },
+  {
+    name: "Poco M7 Pro 5G",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeMMRL-GkIXNVNZ0iYx02a-FN0x8eXKJaHdQ&s",
+    price: "From ₹13,999*",
   },
 ];
 
@@ -110,8 +103,8 @@ export default function HomeDeals() {
       {/* Custom Swiper Navigation */}
       {!isMobile && (
         <>
-          <div className="swiper-button-prev custom-nav mt-7"></div>
-          <div className="swiper-button-next custom-nav mt-7"></div>
+          <div className="swiper-button-prev custom-nav mt-2"></div>
+          <div className="swiper-button-next custom-nav mt-2"></div>
         </>
       )}
 
