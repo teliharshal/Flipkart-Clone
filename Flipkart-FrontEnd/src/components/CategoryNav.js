@@ -37,7 +37,7 @@ export default function CategoryNav() {
   };
 
   return (
-    <div className="bg-white shadow-sm pt-2 relative mt-12">
+    <div className="bg-white shadow-sm pt-2 relative mt-3 ">
       {/* Mobile Menu Button */}
       <div className="px-6 py-2 flex items-center justify-between md:hidden">
         <h2 className="text-lg font-semibold">Categories</h2>
@@ -58,7 +58,7 @@ export default function CategoryNav() {
             >
               <img src={category.image} alt={category.name} className="w-12 h-12 object-contain mb-1" />
               <span className="flex items-center">
-                {category.name} {category.dropdown && <span className="ml-1">▼</span>}
+                {category.name} 
               </span>
             </button>
 
@@ -96,7 +96,7 @@ export default function CategoryNav() {
               >
                 <img src={category.image} alt={category.name} className="w-10 h-10 object-contain mr-3" />
                 <span className="flex items-center">
-                  {category.name} {category.dropdown && <span className="ml-1">▼</span>}
+                  {category.name} 
                 </span>
               </button>
 
@@ -124,7 +124,7 @@ export default function CategoryNav() {
         </div>
         
       )}
-                 {selectedCategory && <ProductListing selectedCategory={selectedCategory} />}
+       {selectedCategory && <ProductListing selectedCategory={selectedCategory} />} 
 
     </div>
   );

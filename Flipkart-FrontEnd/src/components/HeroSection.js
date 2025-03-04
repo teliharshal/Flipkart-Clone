@@ -37,7 +37,7 @@ const HeroSection = () => {
   }, [prevEl, nextEl]);
 
   return (
-    <div className="relative overflow-hidden bg-[#f1f3f6] mb-2 mt-[-49px] ">
+    <div className="relative overflow-hidden bg-[#f1f3f6] mt-3">
       <Swiper
         ref={swiperRef}
         modules={[Navigation, Pagination, Autoplay]}
