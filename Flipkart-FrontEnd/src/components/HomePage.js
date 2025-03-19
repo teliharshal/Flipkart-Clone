@@ -1,7 +1,6 @@
 import React from "react";
-import PromotionalCards from "./PromotionalCards";
+
 import HeroSection from "./HeroSection";
-import HomeDeals from "./HomeDeals";
 import CategoryNav from "./CategoryNav";
 import ProductList from "./ProductList";
 
@@ -20,10 +19,6 @@ const HomePage = () => {
       <HeroSection />
 
 
-      {/* Promotional Cards Section */}
-      <PromotionalCards />
-
-      <HomeDeals/>
 
       <ProductList />
 

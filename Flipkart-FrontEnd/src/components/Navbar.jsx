@@ -100,7 +100,7 @@ const Navbar = () => {
                     <UserIcon className="h-4 w-4 mr-2" /> My Profile
                   </Link>
                   <Link to="/orders" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
-                    <GiftIcon className="h-4 w-4 mr-2" /> Orders
+                  <GiftIcon className="h-4 w-4 mr-2" /> Orders
                   </Link>
                   <Link to="/wishlist" className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100">
                     <HeartIcon className="h-4 w-4 mr-2" /> Wishlist

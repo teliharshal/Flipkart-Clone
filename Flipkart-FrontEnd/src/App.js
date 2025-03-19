@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
-
+import OrderHistory from "./components/OrderHistory";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -21,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/" element={<ProductList />} />
            <Route path="/product/:id" element={<ProductDetails />} />
+           <Route path="/orders" element={<OrderHistory />} />
           </Routes>
         </main>
 

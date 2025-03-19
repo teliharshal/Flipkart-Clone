@@ -34,7 +34,7 @@ const products = [
 const ProductList = () => {
     return (
             <div className="bg-white p-4 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-4">Best Selling TVs</h2>
+              <h2 className="text-2xl font-semibold mb-4">Best Products</h2>
         
               {/* First Row (7 Products) */}
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">

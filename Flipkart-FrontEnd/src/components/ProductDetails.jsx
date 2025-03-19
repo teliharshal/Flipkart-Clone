@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const products = [
@@ -31,13 +31,31 @@ const products = [
 ];
 
 const ProductDetails = () => {
-  const { id } = useParams(); // Get product ID from URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const product = products.find((item) => item.id === parseInt(id));
+
+  // Cart state
+  const [cart, setCart] = useState([]);
+  const [message, setMessage] = useState("");
 
   if (!product) {
     return <h2 className="text-center text-red-500 text-2xl">Product Not Found</h2>;
   }
+
+  // Handle Add to Cart
+  const handleAddToCart = () => {
+    const isProductInCart = cart.some((item) => item.id === product.id);
+
+    if (isProductInCart) {
+      setMessage("⚠️ Product is already in the cart!");
+      setTimeout(() => setMessage(""), 2000); // Clear message after 2 sec
+    } else {
+      setCart([...cart, product]);
+      setMessage("✅ Product added to cart!");
+      setTimeout(() => setMessage(""), 2000);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -70,14 +88,25 @@ const ProductDetails = () => {
             <p className="text-gray-700 mt-4">{product.description}</p>
           </div>
 
-          {/* Buy Now Button */}
-          <button className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 w-full md:w-auto">
-            Buy Now
-          </button>
+          {/* Buttons */}
+          <div className="mt-6 flex flex-col gap-3">
+            <button className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 w-full md:w-auto">
+              Buy Now
+            </button>
+            <button
+              onClick={handleAddToCart}
+              className="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 w-full md:w-auto"
+            >
+              Add to Cart 🛒
+            </button>
+          </div>
+
+          {/* Cart Message */}
+          {message && <p className="mt-3 text-center text-gray-800 font-semibold">{message}</p>}
         </div>
       </div>
     </div>
   );
-  };
-  
-  export default ProductDetails;
+};
+
+export default ProductDetails;
